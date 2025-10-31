@@ -42,7 +42,7 @@ async def command_start_handler(message: Message) -> None:
 @dp.callback_query(F.data == "check")
 async def check_subscription(callback: CallbackQuery):
     try:
-        st = await callback.bot.get_chat_member(channsel_id, callback.from_user.id)
+        st = await callback.bot.get_chat_member(channel_id, callback.from_user.id)
         if st.status in ["creator", "administrator", "member"]:
             sent = await callback.message.answer_document(doc)
             new_fid = sent.document.file_id
